@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 
 export default function HomePage() {
   return (
@@ -18,7 +20,15 @@ export default function HomePage() {
             className="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-200 transition"
           >
             Explore Now
+            
           </a>
+          <Link
+  href="/about"
+  className="block mt-4 text-white underline hover:text-gray-200 transition"
+>
+  Learn more About Us
+</Link>
+
         </header>
       </div>
 
