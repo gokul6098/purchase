@@ -1,9 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function HomeAndAbout() {
   const [isAbout, setIsAbout] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  // Simulate loading effect on first mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // simulate 1 second delay
+    return () => clearTimeout(timer); // cleanup
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -27,8 +36,15 @@ export default function HomeAndAbout() {
         </button>
       </nav>
 
+      {/* Loading Message */}
+      {!loaded && (
+        <div className="text-center py-10 text-xl text-gray-600">
+          Loading content...
+        </div>
+      )}
+
       {/* Home Page */}
-      {!isAbout && (
+      {!isAbout && loaded && (
         <>
           <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 px-6 text-center">
             <header className="max-w-3xl mx-auto">
@@ -102,7 +118,7 @@ export default function HomeAndAbout() {
       )}
 
       {/* About Page */}
-      {isAbout && (
+      {isAbout && loaded && (
         <div className="flex-1 bg-indigo-100 text-center py-16 px-6">
           <h1 className="text-4xl font-bold mb-6 text-indigo-700">About Us 🏢</h1>
           <p className="max-w-2xl mx-auto text-gray-800 text-lg">
