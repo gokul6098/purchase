@@ -61,6 +61,13 @@ export default function HomeAndAbout() {
               >
                 Explore Now
               </a>
+              <a
+  href="/purchase"
+  className="inline-block mt-4 bg-indigo-100 text-indigo-700 font-medium px-5 py-2 rounded-full shadow hover:bg-indigo-200 transition"
+>
+  Buy Now
+</a>
+
             </header>
           </div>
 
